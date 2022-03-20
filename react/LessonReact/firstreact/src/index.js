@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-const item = "Dmitro"
+const item = "Dmitrii"
 
 
 ReactDOM.render(
