@@ -1,67 +1,56 @@
-import { useEffect, useState } from 'react';
+import React, { useState } from "react";
+import './styles/App.css';
+import PostList from "./components/PostList";
+import MyButton from "./components/UI/buttons/MyButton";
+import MyInput from "./components/UI/input/MyInput";
+import ListOfPosts from './components/ListOfPosts'
 
-let id = 0
+
 
 function App() {
 
-  const [messageList, setMessageList] = useState([]);
+  const [posts, setPosts] = useState([
+    { id: 1, title: 'JS', body: 'Description', },
+    { id: 2, title: 'JS', body: 'Description', },
+    { id: 3, title: 'JS', body: 'Description', }
+  ])
 
-  const handleChange = (event) => {
-    event.preventDefault();
-    const target = event.target;
-    const author = target.author.value;
-    const text = target.text.value;
+  const [post, setPost] = useState({ title: '', body: '' })
 
-    setMessageList(prev => [...prev, {
-      id: id++,
-      author: author,
-      text: text,
-    }])
-  } 
+  const addNewPost = (e) => {
+    e.preventDefault()
+    setPosts([...posts, { ...post, id: Date.now() }])
+    setPost({ title: '', body: '' })
+  }
 
-  function giveLastAutor(array) {
-    return array.length ? array[array.length - 1].id + 1 : 0;
-}
+  return (
+    <div className="App">
 
-useEffect( () => {
-    setTimeout( () => {
-        botAnswer(messageList);
-    }, 1500 );
-}, [messageList] );
+      <div style={{flexGrow: '1'}}>
+        <ListOfPosts post={posts}   />
+      </div>
+      <span style={{flexGrow: '3'}}>
+        <form>
+          <MyInput
+            autoFocus={true}
+            value={post.title}
+            onChange={e => setPost({ ...post, title: e.target.value })}
+            type='text'
+            placeholder="Post name"
+          />
+          <MyInput
+            value={post.body}
+            onChange={e => setPost({ ...post, body: e.target.value })}
+            type='text'
+            placeholder="Post description" />
+          <MyButton onClick={addNewPost} style={{ marginTop: '10px' }} >Create post</MyButton>
+        </form>
+        <PostList posts={posts} title='Post list 1' />
+      </span>
 
-function botAnswer() {
-    const lastAuthor = messageList[messageList.length - 1];
-    if (lastAuthor && lastAuthor.author) {
-        setMessageList(prev => [...prev, {
-            id: giveLastAutor(prev),
-            text: `${lastAuthor.author} Ваше сообщение записано`,
-        }]);
-    }
-}
-    return (
-        <div className="App">
-            <div className="">
-                <form onSubmit={handleChange} className="form">
-                    <label className="form__label">
-                        <span className="form__span">Имя:</span>
-                        <input className="form__input" type="text" name="author"/>
-                    </label>
-                    <label className="form__label">
-                        <span className="form__span">Сообщение:</span>
-                        <input className="form__input" type="textarea" name="text"/>
-                    </label>
-                    <input className="form__button" type="submit" value="Отправить"/>
-                </form>
-                <div className="message-list">
-                    {messageList.map( message => <div className="message-list__item" key={id}>
-                        { message.author && <p className="message-list__p"><span>Автор:</span> {message.author}</p>}
-                        <p className="message-list__p">{ message.author && <span>Текст:</span>} {message.text}</p>
-                    </div> )}
-                </div>
-            </div>
-        </div>
-    );
 
+    </div>
+  );
 }
 
 export default App;
