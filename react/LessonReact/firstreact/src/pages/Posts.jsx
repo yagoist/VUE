@@ -30,7 +30,7 @@ function Posts() {
 
   useEffect(() => {
     fetchPosts()
-  }, [page])
+  }, [fetchPosts, page])
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost])
