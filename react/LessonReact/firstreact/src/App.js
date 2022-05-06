@@ -1,21 +1,32 @@
-import './App.css';
-import Message from './Message';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import About from "./pages/About";
+import './styles/App.css';
+// import Posts from "./pages/Posts";
+import Navbar from "./components/UI/navbar/Navbar";
+import Profile from "./pages/Profile";
+// import ArrayOfPosts from "./pages/ArrayOfPosts";
+import ChatsList from "./pages/ChatsList";
+import MessagesList from "./pages/MessagesList";
 
-const simpleText = "wonderfull!!!!"
 
-
-
-function App(props) {
+function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        My Fist React App
-        <h3>Hello, {props.name}</h3>        
-       </header>
-       <Message text={simpleText}/>
+    <div>
+      
+      <Navbar/>
+      <Routes>
+        <Route path='/about' element={<About />} />
+        {/* <Route path='/singlepost' element={<Posts />} /> */}
+        {/* <Route path='/allposts' element={<ArrayOfPosts/>}/> */}
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/chatslist' element={<ChatsList />} />
+        <Route path='/messagelist' element={<MessagesList />} />
+        
+      </Routes>
+      
     </div>
-  );
+  )
 }
-
 
 export default App;
