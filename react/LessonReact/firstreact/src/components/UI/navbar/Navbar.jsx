@@ -7,9 +7,11 @@ const Navbar = () => {
     <div className={styles.navbar}>
     <div className={styles.navbar_links}>
       <Link to="/about">О приложении</Link>
-      <Link to="/singlepost">Страница с постами</Link>
+      {/* <Link to="/singlepost">Страница с постами</Link> */}
       {/* <Link to="/allposts">Страница чатов</Link> */}
       <Link to="/profile">Профиль</Link>
+      <Link to="/chatslist">Список чатов</Link>
+      {/* <Link to="/messagelist">Список сообщений</Link> */}
     </div>
   </div>
   )

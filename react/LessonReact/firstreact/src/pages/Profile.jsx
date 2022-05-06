@@ -1,13 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { userFriends, userInfo } from '../redux/reducer/selectors/Selectors'
+
 
 const Profile = () => {
-  const friends = useSelector((state) => {
-    return state.friends
-  })
-  const info = useSelector((state) => {
-      return state.info
-  })
+  const friends = useSelector(userFriends) 
+
+  const info = useSelector(userInfo) 
   
     return (
     <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
@@ -26,10 +25,7 @@ const Profile = () => {
                     <p>{friends.work}</p>
                     <input type='checkbox'/>
                      </div> 
-                     
             )}
-            
-
     </div>
   )
 }
