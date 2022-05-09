@@ -13,8 +13,8 @@ import MessagesList from "./pages/MessagesList";
 function App() {
   return (
     <div>
-      
-      <Navbar/>
+
+      <Navbar />
       <Routes>
         <Route path='/about' element={<About />} />
         {/* <Route path='/singlepost' element={<Posts />} /> */}
@@ -22,9 +22,9 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/chatslist' element={<ChatsList />} />
         <Route path='/messagelist' element={<MessagesList />} />
-        
+
       </Routes>
-      
+
     </div>
   )
 }

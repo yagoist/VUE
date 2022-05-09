@@ -11,5 +11,5 @@ export const getPagesArray = (totalPages) => {
 }
 
 export const messageListNumber = (num) => {
-    
+
 }

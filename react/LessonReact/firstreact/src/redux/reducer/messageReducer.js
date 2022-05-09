@@ -1,5 +1,5 @@
 const initialState = {
-    chats:[
+    chats: [
         {
             id: 11,
             userName: 'Kolya',
@@ -17,9 +17,9 @@ const initialState = {
         },
         {
             id: 14,
-            userName:'John',
+            userName: 'John',
             body: 'Nice!'
-        },    
+        },
     ],
     chat2: [
         {
@@ -39,7 +39,7 @@ const initialState = {
         },
         {
             id: 24,
-            userName:'John',
+            userName: 'John',
             body: 'Nice!'
         },
     ],
@@ -61,7 +61,7 @@ const initialState = {
         },
         {
             id: 34,
-            userName:'John',
+            userName: 'John',
             body: 'Nice!'
         },
     ],

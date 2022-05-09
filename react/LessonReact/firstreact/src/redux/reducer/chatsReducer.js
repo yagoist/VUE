@@ -20,23 +20,23 @@ const initialState = {
     messages: [
         {
             chatId: 1,
-            message: 'Hello!!!' 
+            message: 'Hello!!!'
         },
         {
             chatId: 1,
-            message: 'Hi!!!' 
+            message: 'Hi!!!'
         },
         {
             chatId: 1,
-            message: 'Are we all there? :)' 
+            message: 'Are we all there? :)'
         },
         {
             chatId: 1,
-            message: 'Yes!!!' 
+            message: 'Yes!!!'
         },
         {
             chatId: 2,
-            message: 'Any body there???' 
+            message: 'Any body there???'
         },
     ]
 }
