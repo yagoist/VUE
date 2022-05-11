@@ -1,6 +1,8 @@
+// import { chatsReducer } from "../chatsReducer";
 
-export const botAnswer = (message) => {
-    return setTimeout(() => {
-            console.log(`Ваше сообщение "${message}" добавлено!`);
-        }, 3000)
-    }
+// export const botAnswer = (message) => (dispatch, title) => {
+//     dispatch(action)
+//     setTimeout(() => {
+//             dispatch(console.log(setTitle(message)));
+//         }, 3000)
+//     }

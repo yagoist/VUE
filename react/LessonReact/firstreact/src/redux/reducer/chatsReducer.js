@@ -1,59 +1,58 @@
+
 const initialState = {
-    chats: [
-        {
-            id: 1,
-            name: 'machine'
-        },
-        {
-            id: 2,
-            name: 'engine'
-        },
-        {
-            id: 3,
-            name: 'chasis'
-        },
-        {
-            id: 4,
-            name: 'repair'
-        },
-    ],
-    messages: [
-        {
-            chatId: 1,
-            message: 'Hello!!!'
-        },
-        {
-            chatId: 1,
-            message: 'Hi!!!'
-        },
-        {
-            chatId: 1,
-            message: 'Are we all there? :)'
-        },
-        {
-            chatId: 1,
-            message: 'Yes!!!'
-        },
-        {
-            chatId: 2,
-            message: 'Any body there???'
-        },
-    ]
+    posts: [],
+    loading: false,
+    error: null
+        
 }
 
 export const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'addChat':
+        case 'get_posts': {
             return {
                 ...state,
-                chats: [...state.chats, action.payload]
+                posts: action.payload,
+                loading: false,
+                
             }
-        case 'deleteChat':
+        }
+        case 'isLoading':
             return {
                 ...state,
-                chats: state.chats.filter((element) => element.id !== action.payload)
+                loading: true
             }
+        case 'error':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload 
+            }
+        // case 'deleteChat':
+        //     return {
+        //         ...state,
+        //         chats: state.chats.filter((element) => element.id !== action.payload)
+        //     }
         default:
             return state
     }
+}
+export const loadPosts = () => {
+    return async(dispatch) => {
+        dispatch({
+            type: 'isLoading'
+        })
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+            const posts = await response.json()
+            dispatch({
+                type: 'get_posts',
+                payload: posts
+            })
+        } catch (err) {
+            dispatch({
+                type: 'error',
+                payload: err.message
+            });
+        }
+    } 
 }

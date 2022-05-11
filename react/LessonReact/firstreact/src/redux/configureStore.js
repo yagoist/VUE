@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
+import { botAnswer } from "./reducer/actions/BotAnswer";
 
 
 
@@ -15,8 +16,9 @@ const persistConfig = {
 
 
 const rootReducer = combineReducers({
-    chats: chatsReducer,
+    posts: chatsReducer,
     user: userReducer,
+    botAnswered: botAnswer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
