@@ -1,31 +1,34 @@
+// import * as types from './actions/actionTypes'
 
 const initialState = {
     posts: [],
-    loading: false,
-    error: null
+    chatsLoading: false,
+    loadingError: null,
+    user: null,
+    error: null,
+    loading: false
         
 }
 
 export const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'get_posts': {
+       case 'get_posts': {
             return {
                 ...state,
                 posts: action.payload,
-                loading: false,
-                
+                chatsLoading: false,
             }
         }
-        case 'isLoading':
+        case 'chatsLoading':
             return {
                 ...state,
-                loading: true
+                chatsLoading: true
             }
-        case 'error':
+        case 'loadingError':
             return {
                 ...state,
-                loading: false,
-                error: action.payload 
+                chatsLoading: false,
+                loadingError: action.payload 
             }
         // case 'deleteChat':
         //     return {
@@ -39,7 +42,7 @@ export const chatsReducer = (state = initialState, action) => {
 export const loadPosts = () => {
     return async(dispatch) => {
         dispatch({
-            type: 'isLoading'
+            type: 'chatsLoading'
         })
         try {
             const response = await fetch('https://jsonplaceholder.typicode.com/posts')
@@ -50,7 +53,7 @@ export const loadPosts = () => {
             })
         } catch (err) {
             dispatch({
-                type: 'error',
+                type: 'loadingError',
                 payload: err.message
             });
         }

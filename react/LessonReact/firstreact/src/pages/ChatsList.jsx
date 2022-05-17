@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import MyButton from '../components/UI/buttons/MyButton';
 import Loader from '../components/UI/Loader/Loader';
 import { loadPosts } from '../redux/reducer/chatsReducer';
-import { isLoading, loadingError, postSelector } from '../redux/reducer/selectors/Selectors';
+import { chatsLoading, loadingError, postSelector } from '../redux/reducer/selectors/Selectors';
 
 const ChatsList = () => {
     const dispatch = useDispatch();
     const posts = useSelector(postSelector)
-    const loading = useSelector(isLoading)
+    const loading = useSelector(chatsLoading)
     const error = useSelector(loadingError)
 
     useEffect(() => {
@@ -17,13 +17,14 @@ const ChatsList = () => {
 
     const rebootPosts = () => {
       dispatch(loadPosts())
+      chatsLoading = false
     }
 
     if(loading) {
-      return (<>
+      return (
+      <>
       <Loader/>
       </>
-
       )
     }
 
@@ -41,7 +42,7 @@ const ChatsList = () => {
         posts.map((item) => (
           <div key={item.id}>
             <div style={{display:'flex', border: '1px solid red'}}>
-              {item.body}
+              {item.title}
             </div>
           </div>
         ))
