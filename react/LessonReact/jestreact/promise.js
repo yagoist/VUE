@@ -12,4 +12,4 @@ const getPromise = async () => {
 }
 
 
-module.exports =getPromise
+module.exports =getPromise 

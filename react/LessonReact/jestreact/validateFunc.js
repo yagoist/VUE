@@ -5,4 +5,4 @@ const validateFunc = (value) => {
     return true
 }
 
-module.exports = validateFunc
+module.exports = validateFunc 

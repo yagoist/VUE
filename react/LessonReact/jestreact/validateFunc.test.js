@@ -16,4 +16,4 @@ describe('validateFunc', () => {
     test('three even digits', () => {
         expect(validateFunc(100)).toBe(false)    
     })
-})
+}) 
